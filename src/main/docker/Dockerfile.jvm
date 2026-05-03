@@ -1,4 +1,4 @@
-FROM openjdk:21-jre-slim
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY target/quarkus-app/lib/ /app/lib/
 COPY target/quarkus-app/*.jar /app/
