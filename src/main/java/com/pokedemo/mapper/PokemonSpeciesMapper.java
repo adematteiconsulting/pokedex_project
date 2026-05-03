@@ -21,7 +21,11 @@ public class PokemonSpeciesMapper {
                 species.getFlavorTextEntries().stream()
                         .filter(f -> f.language.name.equals("en"))
                         .findFirst()
-                        .map(f -> f.getFlavorText().replace("\n", " ").replace("\f", " "))
+                        .map(f -> f.getFlavorText()
+                                .replace("\n", " ")
+                                .replace("\f", " ")
+                                .replaceAll(" {2,}", " ")  // collassa eventuali doppi spazi
+                                .trim())
                         .orElse("Description unavailable"));
 
         return response;
